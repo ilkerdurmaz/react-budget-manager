@@ -20,16 +20,16 @@ export default function TransactionList() {
         let tsList = [...transactionList];
         for (let i = 0; i < selectedList.length; i++) {
             tsList = tsList.filter(item => item.id !== selectedList[i]);
+            setTransactionList(tsList);
+            setSelectedList([]);
         }
-        setTransactionList(tsList);
-        setSelectedList([]);
     }
 
     return (
         <div className="transactions">
             <div className="title-container">
                 <h4>Transactions</h4>
-                <button onClick={deleteSelectedListHandler}>delete</button>
+                <button onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}>delete</button>
             </div>
             {
                 transactionList.length > 0 ?
