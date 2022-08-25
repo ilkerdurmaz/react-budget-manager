@@ -1,0 +1,7 @@
+form {
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
