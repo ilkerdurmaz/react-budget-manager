@@ -1,10 +1,13 @@
 import "./TransactionInput.css"
+import { useContext } from "react"
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TransactionInput({ saveTransaction }) {
 
     function handleSubmit(e) {
         e.preventDefault();
         saveTransaction({
+            id: uuidv4(),
             isExpense: e.target.isExpense.checked,
             desc: e.target.desc.value,
             category: e.target.category.value,
