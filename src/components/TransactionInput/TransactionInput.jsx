@@ -11,7 +11,7 @@ export default function TransactionInput({ saveTransaction }) {
             isExpense: e.target.isExpense.checked,
             desc: e.target.desc.value,
             category: e.target.category.value,
-            amount: e.target.amount.value,
+            amount: Number(e.target.amount.value),
         });
         e.target.reset();
     }
