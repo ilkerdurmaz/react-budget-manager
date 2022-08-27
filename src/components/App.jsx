@@ -9,7 +9,7 @@ export const AppContext = createContext();
 
 
 function App() {
-  const [categories, setCategories] = useState({
+  const [categories, setCategories] = useState({ // CONTEXTE DAHİL EDİLECEK
     "Clothing": 0,
     "Food": 0,
     "Travel": 0,
@@ -31,14 +31,16 @@ function App() {
 
   return (
     <AppContext.Provider value={{ transactionList, setTransactionList }}>
-      <div className="App">
+      <div className="border rounded my-4 container p-0">
         <Header />
-        <div className="body-container">
-          <div className="transactions-container">
+        <div className="row">
+
+          <div className="col-sm-12 col-md-7">
             <TransactionInput saveTransaction={updateTransactionList} />
             <TransactionList />
           </div>
-          <div className="graph-container">
+
+          <div className="col-sm-12 col-md-5 text-center">
             <h2>Graph Header</h2>
             <Graph />
           </div>
@@ -49,3 +51,4 @@ function App() {
 }
 
 export default App;
+
