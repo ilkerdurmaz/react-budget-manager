@@ -6,7 +6,7 @@ import { AppContext } from './../App';
 export default function TransactionList() {
 
     const transactionList = useContext(AppContext).transactionList;
-    const setTransactionList = useContext(AppContext).setTransactionList;
+    const setTransactionList = useContext(AppContext).setTransactionListHandler;
     const [selectedList, setSelectedList] = useState([]);
 
     function selectedListHandler(id) {
@@ -17,12 +17,7 @@ export default function TransactionList() {
     }
 
     function deleteSelectedListHandler() {
-        let tsList = [...transactionList];
-        for (let i = 0; i < selectedList.length; i++) {
-            tsList = tsList.filter(item => item.id !== selectedList[i]);
-            setTransactionList(tsList);
-            setSelectedList([]);
-        }
+        setTransactionList(selectedList);
     }
 
     return (
@@ -31,7 +26,6 @@ export default function TransactionList() {
                 <small className="h5 m-0">Transactions</small>
                 <button className="btn-close btn-close-white border border-2 border-primary " onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}></button>
             </div>
-
 
             {
                 transactionList.length > 0 ?

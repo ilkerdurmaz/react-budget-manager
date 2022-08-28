@@ -4,8 +4,8 @@ import { AppContext } from './../App'; //CATEGORIES ALINACAK
 import { v4 as uuidv4 } from 'uuid';
 
 export default function TransactionInput({ saveTransaction }) {
-    const expenseCategories = useContext(AppContext).expenseCategories;
-    const incomeCategories = useContext(AppContext).incomeCategories;
+    const expenseCategories = useContext(AppContext).initialExp;
+    const incomeCategories = useContext(AppContext).initialInc;
     const selectRef = useRef(null);
     const [categories, setCategories] = useState(expenseCategories)
 
@@ -28,7 +28,6 @@ export default function TransactionInput({ saveTransaction }) {
         e.target.reset();
         categorySwitcher(e.target)
     }
-
 
     return (
         <div className="border shadow-sm rounded my-2">

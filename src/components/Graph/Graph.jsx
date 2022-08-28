@@ -1,33 +1,32 @@
 import "./Graph.css"
-import { AppContext } from './../App';
-import { useContext, useEffect } from "react"
 import { VictoryPie } from 'victory';
 
-export default function Graph() {
-    const transactionList = useContext(AppContext).transactionList;
-    const expenseCategories = useContext(AppContext).expenseCategories;
-    const incomeCategories = useContext(AppContext).incomeCategories;
-    //const values = Object.values(expenseCategories).filter(item => item > 0)
-    //const keys = Object.keys(expenseCategories).filter(item => item > 0)
+export default function Graph({ categories }) {
+
+    let data = categories.filter(item => item.amount > 0)
     return (
-        <div className="graph">
+        <div className="border rounded my-2 shadow-sm">
+            <div className="bg-dark bg-gradient rounded-top p-2 text-light d-flex justify-content-between align-items-center">
+                <h2>Expanses</h2>
+            </div>
             <VictoryPie
                 categories={{ x: ["dogs", "cats", "mice"] }}
-                innerRadius={100}
-                data={[
-                    { x: "Cats", y: 35, fill: "tomato" },
-                    { x: "Dogs", y: 50, fill: "black" },
-                    { x: "Birds", y: 55, fill: "tomato" },
-                    { x: "Birds", y: 55, fill: "tomato" }
-                ]}
+                innerRadius={50}
+                width={175}
+                height={175}
+                data={data.map(category => {
+                    return { x: category.name, y: category.amount, fill: category.color }
+                })}
                 animate={{
-                    duration: 1000
+                    duration: 500
                 }}
                 style={{
                     data: {
                         fill: ({ datum }) => datum.fill
-                    }
+                    },
+                    labels: { fontSize: 5 }
                 }}
+                labelRadius={({ innerRadius }) => innerRadius + 5}
             />
         </div>
     )
@@ -35,3 +34,4 @@ export default function Graph() {
 
 
 
+//return { x: category.name, y: category.amount, fill: category.color }
