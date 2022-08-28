@@ -1,8 +1,20 @@
 import "./TransactionInput.css"
-import { useContext } from "react" //CATEGORIES ALINACAK
+import { useContext, useRef, useState } from "react"
+import { AppContext } from './../App'; //CATEGORIES ALINACAK
 import { v4 as uuidv4 } from 'uuid';
 
 export default function TransactionInput({ saveTransaction }) {
+    const expenseCategories = useContext(AppContext).expenseCategories;
+    const incomeCategories = useContext(AppContext).incomeCategories;
+    const selectRef = useRef(null);
+    const [category, setCategory] = useState(expenseCategories)
+
+    function categorySwitcher(e) {
+        if (e.target.checked)
+            setCategory(incomeCategories)
+        else
+            setCategory(expenseCategories)
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -14,7 +26,9 @@ export default function TransactionInput({ saveTransaction }) {
             amount: Number(e.target.amount.value),
         });
         e.target.reset();
+        categorySwitcher(e.target)
     }
+
 
     return (
         <div className="border shadow-sm rounded m-2">
@@ -30,18 +44,19 @@ export default function TransactionInput({ saveTransaction }) {
                     <div className="d-inline-flex justify-content-center ms-1 ">
                         <small>Expense</small>
                         <div className="form-check form-switch d-flex justify-content-center">
-                            <input type="checkbox" name="isExpense" className="form-check-input" role="switch" />
+                            <input type="checkbox" name="isExpense" className="form-check-input" role="switch" onChange={categorySwitcher} />
                         </div>
                         <small>Income</small>
                     </div>
                 </div>
                 <div className="d-flex">
-                    <select name="category" defaultValue={"Category 1"} className="form-select me-1 my-2 shadow-sm">
-                        <option value="Category" disabled>Select Category</option>
-                        <option value="Category 1">Category 1</option>
-                        <option value="Category 2">Category 2</option>
-                        <option value="Category 3">Category 3</option>
-                        <option value="Category 4">Category 4</option>
+                    <select ref={selectRef} defaultValue={""} name="category" className="form-select me-1 my-2 shadow-sm">
+                        <option value="" disabled>Select Category</option>
+                        {
+                            Object.keys(category).map((category, index) => {
+                                return <option value={category} key={index}>{category}</option>
+                            })
+                        }
                     </select>
                     <input required type="number" placeholder="Amount" name="amount" className="form-control my-2 shadow-sm" />
                 </div>

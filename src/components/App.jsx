@@ -5,18 +5,27 @@ import TransactionList from './TransactionList/TransactionList';
 import Graph from './Graph/Graph';
 import { useState, createContext, useEffect } from "react";
 
+
 export const AppContext = createContext();
 
 
 function App() {
-  const [categories, setCategories] = useState({ // CONTEXTE DAHİL EDİLECEK
+  const [expenseCategories, setExpenseCategories] = useState({
     "Clothing": 0,
     "Food": 0,
     "Travel": 0,
     "Health Care": 0,
     "Shopping": 0,
     "Bills": 0,
-    "Others:": 0
+    "Others": 0
+  });
+
+  const [incomeCategories, setIncomeCategories] = useState({
+    "Salary": 0,
+    "Interests": 0,
+    "Business": 0,
+    "Extra Income": 0,
+
   });
 
   const [transactionList, setTransactionList] = useState(localStorage.getItem("transactionList") ? JSON.parse(localStorage.getItem("transactionList")) : []);
@@ -30,7 +39,7 @@ function App() {
   }, [transactionList]);
 
   return (
-    <AppContext.Provider value={{ transactionList, setTransactionList }}>
+    <AppContext.Provider value={{ transactionList, setTransactionList, expenseCategories, incomeCategories }}>
       <div className="border rounded my-4 container p-0">
         <Header />
         <div className="row">

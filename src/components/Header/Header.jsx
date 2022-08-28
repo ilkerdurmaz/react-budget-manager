@@ -16,11 +16,11 @@ export default function Header() {
                 </div>
                 <div className="col d-flex align-items-center justify-content-end">
                     <div className="d-flex flex-column align-items-center alert alert-success py-1 my-2 me-1">
-                        <small>{income}</small>
+                        <small>₺{income}</small>
                         <small>Income</small>
                     </div>
                     <div className="d-flex flex-column align-items-center alert alert-primary py-1 my-2 ms-1">
-                        <small>{balance}</small>
+                        <small>₺{balance}</small>
                         <small>Balance</small>
                     </div>
                 </div>

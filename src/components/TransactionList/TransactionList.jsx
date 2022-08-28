@@ -29,7 +29,7 @@ export default function TransactionList() {
         <div className="border rounded m-2 pb-1 shadow-sm">
             <div className="bg-dark bg-gradient rounded-top p-2 mb-2 text-light d-flex justify-content-between align-items-center">
                 <small className="h5 m-0">Transactions</small>
-                <button className="btn-close border border-danger border-3" onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}></button>
+                <button className="btn-close btn-close-white border border-2 border-primary " onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}></button>
             </div>
 
 
@@ -37,7 +37,8 @@ export default function TransactionList() {
                 transactionList.length > 0 ?
                     transactionList.map((transaction, index) => {
                         return <Transaction key={transaction.id} index={index} selectedListHandler={selectedListHandler} />
-                    }) : <small className="h5 m-1">There is no transaction here yet. </small>
+                    }) : <div className="alert alert-warning m-2">There is no transaction here yet.</div>
+
             }
         </div>
     )
