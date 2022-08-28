@@ -58,7 +58,7 @@ function App() {
           case "Others":
             initialExp[6].amount -= transaction[0].amount;
             break;
-          default: return undefined;
+          default: break;
         }
       }
 
@@ -92,7 +92,7 @@ function App() {
       case "Others":
         initialExp[6].amount += transaction.amount;
         break;
-      default: return undefined;
+      default: break;
     }
     setTransactionList([...transactionList, transaction]);
   }
@@ -110,7 +110,7 @@ function App() {
         <Header />
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-7 text-center">
+            <div className="col-sm-12 col-md-7 text-center pe-lg-0">
               <Graph categories={initialExp} />
             </div>
 

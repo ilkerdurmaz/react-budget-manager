@@ -5,7 +5,7 @@ export default function Graph({ categories }) {
 
     let data = categories.filter(item => item.amount > 0)
     return (
-        <div className="border rounded my-2 shadow-sm">
+        <div className="border rounded my-2 shadow-sm pb-5 m-0">
             <div className="bg-dark bg-gradient rounded-top p-2 text-light d-flex justify-content-between align-items-center">
                 <h2>Expanses</h2>
             </div>
