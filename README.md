@@ -28,8 +28,10 @@ The build is minified and the filenames include the hashes.
 
 * [React.js](https://reactjs.org/)
 * [React Icons](https://react-icons.github.io/react-icons/)
+* [Bootstrap](https://getbootstrap.com/)
 * [UUID](https://github.com/uuidjs/uuid)
 * [Victory Charts](https://formidable.com/open-source/victory/)
+
 
 
 
