@@ -26,7 +26,7 @@ export default function TransactionList() {
     }
 
     return (
-        <div className="border rounded m-2 pb-1 shadow-sm">
+        <div className="border rounded mb-2 mt-1 shadow-sm">
             <div className="bg-dark bg-gradient rounded-top p-2 mb-2 text-light d-flex justify-content-between align-items-center">
                 <small className="h5 m-0">Transactions</small>
                 <button className="btn-close btn-close-white border border-2 border-primary " onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}></button>

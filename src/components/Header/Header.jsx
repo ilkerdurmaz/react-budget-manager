@@ -5,8 +5,8 @@ import { useContext } from "react";
 export default function Header() {
     const transactionList = useContext(AppContext).transactionList;
 
-    let income = transactionList.reduce((sum, item) => sum += item.isExpense ? item.amount : 0, 0);
-    let balance = income - transactionList.reduce((sum, item) => sum += !item.isExpense ? item.amount : 0, 0);
+    let income = transactionList.reduce((sum, item) => sum += item.isIncome ? item.amount : 0, 0);
+    let balance = income - transactionList.reduce((sum, item) => sum += !item.isIncome ? item.amount : 0, 0);
 
     return (
         <div className="container-fluid shadow-sm bg-dark bg-gradient text-light rounded-top">

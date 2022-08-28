@@ -7,20 +7,20 @@ export default function TransactionInput({ saveTransaction }) {
     const expenseCategories = useContext(AppContext).expenseCategories;
     const incomeCategories = useContext(AppContext).incomeCategories;
     const selectRef = useRef(null);
-    const [category, setCategory] = useState(expenseCategories)
+    const [categories, setCategories] = useState(expenseCategories)
 
     function categorySwitcher(e) {
         if (e.target.checked)
-            setCategory(incomeCategories)
+            setCategories(incomeCategories)
         else
-            setCategory(expenseCategories)
+            setCategories(expenseCategories)
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         saveTransaction({
             id: uuidv4(),
-            isExpense: e.target.isExpense.checked,
+            isIncome: e.target.isIncome.checked,
             desc: e.target.desc.value,
             category: e.target.category.value,
             amount: Number(e.target.amount.value),
@@ -31,7 +31,7 @@ export default function TransactionInput({ saveTransaction }) {
 
 
     return (
-        <div className="border shadow-sm rounded m-2">
+        <div className="border shadow-sm rounded my-2">
 
             <div className="bg-dark bg-gradient rounded-top p-2 text-light">
                 <small className="h5">New Transaction</small>
@@ -44,17 +44,17 @@ export default function TransactionInput({ saveTransaction }) {
                     <div className="d-inline-flex justify-content-center ms-1 ">
                         <small>Expense</small>
                         <div className="form-check form-switch d-flex justify-content-center">
-                            <input type="checkbox" name="isExpense" className="form-check-input" role="switch" onChange={categorySwitcher} />
+                            <input type="checkbox" name="isIncome" className="form-check-input" role="switch" onChange={categorySwitcher} />
                         </div>
                         <small>Income</small>
                     </div>
                 </div>
                 <div className="d-flex">
-                    <select ref={selectRef} defaultValue={""} name="category" className="form-select me-1 my-2 shadow-sm">
+                    <select ref={selectRef} name="category" className="form-select me-1 my-2 shadow-sm">
                         <option value="" disabled>Select Category</option>
                         {
-                            Object.keys(category).map((category, index) => {
-                                return <option value={category} key={index}>{category}</option>
+                            categories.map((category, index) => {
+                                return <option value={category.name} key={index}>{category.name}</option>
                             })
                         }
                     </select>
