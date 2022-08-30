@@ -2,7 +2,7 @@
 **An application that provides financial management functions.**
 **It receives the information from the transaction input component, lists it, applies it to the pie chart and stores it in localstorage.**
 
-![ss-budget](https://user-images.githubusercontent.com/14932895/187091054-3a24e3a9-06e4-4cba-a9ed-58903a9990d7.png)
+![ss-budget](https://user-images.githubusercontent.com/14932895/187322708-f9f22d0c-6e09-4d0f-a8b1-8ef67d8e6851.png)
 
 ## [DEMO](https://react-app-budget.netlify.app/)
 
