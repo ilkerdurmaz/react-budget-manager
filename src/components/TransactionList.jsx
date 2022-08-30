@@ -1,7 +1,6 @@
-import "./TransactionList.css"
-import Transaction from "../Transaction/Transaction"
+import Transaction from "./Transaction"
 import { useContext, useState } from "react"
-import { AppContext } from './../App';
+import { AppContext } from './App';
 
 export default function TransactionList() {
 
@@ -21,19 +20,20 @@ export default function TransactionList() {
     }
 
     return (
-        <div className="border rounded mb-2 mt-1 shadow-sm">
+        <div className="border rounded my-2 shadow-sm">
             <div className="bg-dark bg-gradient rounded-top p-2 mb-2 text-light d-flex justify-content-between align-items-center">
                 <small className="h5 m-0">Transactions</small>
                 <button className="btn-close btn-close-white border border-2 border-primary " onClick={selectedList.length > 0 ? deleteSelectedListHandler : undefined}></button>
             </div>
 
-            {
-                transactionList.length > 0 ?
-                    transactionList.map((transaction, index) => {
-                        return <Transaction key={transaction.id} index={index} selectedListHandler={selectedListHandler} />
-                    }) : <div className="alert alert-warning m-2">There is no transaction here yet.</div>
-
-            }
+            <div style={{ maxHeight: '415px', overflow: 'auto' }}>
+                {
+                    transactionList.length > 0 ?
+                        transactionList.map((transaction, index) => {
+                            return <Transaction key={transaction.id} index={index} selectedListHandler={selectedListHandler} />
+                        }) : <div className="alert alert-warning m-2">There is no transaction here yet.</div>
+                }
+            </div>
         </div>
     )
 }

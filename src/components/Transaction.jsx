@@ -1,7 +1,18 @@
-import "./Transaction.css"
 import { useContext, useState } from "react"
-import { AppContext } from './../App';
-import { GrCoatCheck, GrCafeteria, GrTrain, GrAidOption, GrCart, GrCopy, GrMore } from "react-icons/gr";
+import { AppContext } from './App';
+import {
+    GrCoatCheck,
+    GrCafeteria,
+    GrTrain,
+    GrAidOption,
+    GrCart,
+    GrCopy,
+    GrMore,
+    GrCurrency,
+    GrLineChart,
+    GrWorkshop,
+    GrMoney
+} from "react-icons/gr";
 
 
 
@@ -20,6 +31,14 @@ function Icons({ icon, size }) {
             return <GrCart size={size} />;
         case "Bills":
             return <GrCopy size={size} />;
+        case "Salary":
+            return <GrCurrency size={size} />;
+        case "Interests":
+            return <GrLineChart size={size} />;
+        case "Business":
+            return <GrWorkshop size={size} />;
+        case "Extra Income":
+            return <GrMoney size={size} />;
         default: return <GrMore size={size} />;
     }
 }

@@ -1,12 +1,10 @@
-import "./TransactionInput.css"
-import { useContext, useRef, useState } from "react"
-import { AppContext } from './../App'; //CATEGORIES ALINACAK
+import { useContext, useState } from "react"
+import { AppContext } from './App'; //CATEGORIES ALINACAK
 import { v4 as uuidv4 } from 'uuid';
 
 export default function TransactionInput({ saveTransaction }) {
     const expenseCategories = useContext(AppContext).initialExp;
     const incomeCategories = useContext(AppContext).initialInc;
-    const selectRef = useRef(null);
     const [categories, setCategories] = useState(expenseCategories)
 
     function categorySwitcher(e) {
@@ -49,7 +47,7 @@ export default function TransactionInput({ saveTransaction }) {
                     </div>
                 </div>
                 <div className="d-flex">
-                    <select ref={selectRef} name="category" className="form-select me-1 my-2 shadow-sm">
+                    <select name="category" className="form-select me-1 my-2 shadow-sm">
                         <option value="" disabled>Select Category</option>
                         {
                             categories.map((category, index) => {

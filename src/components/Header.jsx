@@ -1,5 +1,4 @@
-import "./Header.css"
-import { AppContext } from './../App';
+import { AppContext } from './App';
 import { useContext } from "react";
 
 export default function Header() {
